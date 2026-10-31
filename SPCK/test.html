@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Nhiều nhóm Button độc lập</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .button-group {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .btn {
+      padding: 8px 16px;
+      margin-right: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    /* Trạng thái khi nút được chọn */
+    .btn.active {
+      background-color: #007bff;
+      color: white;
+      border-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Nhóm 1 -->
+  <div class="button-group">
+    <p><strong>Nhóm 1 (Chọn Size):</strong></p>
+    <button class="btn active">S</button>
+    <button class="btn">M</button>
+    <button class="btn">L</button>
+  </div>
+
+  <!-- Nhóm 2 -->
+  <div class="button-group">
+    <p><strong>Nhóm 2 (Chọn Màu):</strong></p>
+    <button class="btn active">Đỏ</button>
+    <button class="btn">Xanh</button>
+    <button class="btn">Vàng</button>
+  </div>
+
+  <script>
+    // Lấy tất cả các nhóm nút
+    const groups = document.querySelectorAll('.button-group');
+
+    // Duyệt qua từng nhóm
+    groups.forEach(group => {
+      // Lấy các nút bên trong nhóm hiện tại
+      const buttons = group.querySelectorAll('.btn');
+
+      buttons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Xóa 'active' của các nút trong chính nhóm này
+          buttons.forEach(btn => btn.classList.remove('active'));
+          
+          // Thêm 'active' cho nút vừa click
+          this.classList.add('active');
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
